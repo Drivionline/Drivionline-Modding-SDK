@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş - Drivionline</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/favicon.png?v=2" type="image/png">
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <div class="container" style="max-width: 450px; margin-top: 80px;">
+        
+        <div class="panel-box" id="loginPanel">
+            <div class="panel-header">Giriş Yap</div>
+            <div class="panel-content">
+                
+                <div class="alert-error" id="errorMsg"></div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" id="username" class="form-input" autocomplete="off" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="password" id="password" class="form-input" required>
+                    </div>
+
+                    <div class="checkbox-wrap">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Beni Hatırla (30 Gün)</label>
+                    </div>
+
+                    <button type="submit" class="btn" id="submitBtn" style="width: 100%; padding: 12px;">Giriş Yap</button>
+                </form>
+
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="#" id="showForgotBtn" style="color: #b71c1c; font-size: 13px; text-decoration: none; font-weight: bold;">Şifremi Unuttum</a>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="/register" style="color: #888888; font-size: 13px; text-decoration: none; font-weight: bold;">Hesabın yok mu? Kayıt Ol</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-box" id="forgotPanel1" style="display: none;">
+            <div class="panel-header" style="border-top: 2px solid #b71c1c;">Şifremi Unuttum</div>
+            <div class="panel-content">
+                <div class="alert-error" id="forgotError1"></div>
+                <p style="font-size: 13px; color: #aaa; margin-bottom: 20px;">Hesabınıza kayıtlı e-posta adresini girin. Size bir sıfırlama kodu göndereceğiz.</p>
+
+                <form id="forgotForm1">
+                    <div class="form-group">
+                        <label>Kayıtlı E-Posta Adresi</label>
+                        <input type="email" id="forgotEmail" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn" id="forgotSubmit1" style="width: 100%; padding: 12px; background: linear-gradient(to bottom, #5e1b1b 0%, #330000 100%); border-color: #ff5252;">Sıfırlama Kodu Gönder</button>
+                </form>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="#" id="backToLogin1" style="color: #888888; font-size: 13px; text-decoration: none; font-weight: bold;">Giriş Ekranına Dön</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-box" id="forgotPanel2" style="display: none;">
+            <div class="panel-header" style="border-top: 2px solid #b71c1c;">Kodu Doğrula</div>
+            <div class="panel-content">
+                <div class="alert-error" id="forgotError2"></div>
+                <p style="font-size: 13px; color: #aaa; margin-bottom: 20px;">E-postanıza gönderilen 6 haneli kodu ve yeni şifrenizi girin.</p>
+
+                <form id="forgotForm2">
+                    <div class="form-group">
+                        <label>Doğrulama Kodu</label>
+                        <input type="text" id="resetCode" class="form-input" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Yeni Şifre</label>
+                        <input type="password" id="newResetPassword" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn" id="forgotSubmit2" style="width: 100%; padding: 12px; background: linear-gradient(to bottom, #1b5e20 0%, #003300 100%); border-color: #4caf50;">Şifreyi Değiştir</button>
+                </form>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="#" id="backToLogin2" style="color: #888888; font-size: 13px; text-decoration: none; font-weight: bold;">İptal Et ve Girişe Dön</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer-container"></div>
+    
+    <script src="/footer.js"></script>
+    <script src="navbar.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

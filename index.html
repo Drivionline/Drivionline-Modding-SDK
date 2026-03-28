@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivionline - Online</title>
+    <meta name="description" content="Drivionline: Yarı-Gerçekçi fizik motoru ve mod desteği ile çok oyunculu araç simülasyonu. Kendi sunucunu kur, modlarını geliştir ve topluluğa katıl!">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/favicon.png?v=2" type="image/png">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Drivionline",
+      "url": "https://drivionline.com/"
+    }
+    </script>
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title notranslate" translate="no">
+                <span class="text-drivi">Drivi</span><span class="text-online">Online</span>
+            </h1>
+            <p class="hero-subtitle">Yarı-Gerçekçi fizik motoru, mod desteği ve çok oyunculu sürüş deneyimi. Ücretsiz oyna, kendi sunucunu kur veya modlarını geliştir.</p>
+            <div class="hero-buttons">
+                <a href="https://ogutsemih.itch.io" target="_blank" rel="noopener noreferrer" class="btn btn-massive" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                    <img src="/assets/itchdotio.svg" alt="itch.io logosu" width="32" height="32">
+                    Oyunu İndir (İtch.io ile YAKINDA)
+                </a>
+                <a href="#servers" class="btn btn-outline">Sunuculara Göz At</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="cinematic-banner">
+        <div class="banner-overlay">
+            <h2 class="banner-text notranslate" translate="no">MODDING. MULTIPLAYER. FUNNY.</h2>
+        </div>
+    </section>
+
+    <section id="servers" class="server-showcase">
+        <div class="container">
+            <h2 class="section-title">Anlık Aktif Sunucular</h2>
+            <div class="glass-table-wrapper">
+                <table class="server-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sunucu İsmi</th>
+                            <th>Oyuncu</th>
+                            <th>Tür</th>
+                        </tr>
+                    </thead>
+                    <tbody id="serverListBody">
+                        <tr><td colspan="4" style="text-align: center; color: #888;">Sunucu listesi çekiliyor...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section> 
+
+    <section id="features" class="features-section">
+    <div class="container">
+        <h2 class="section-title" style="text-align: center;">Oyun Özellikleri</h2>
+        <div class="features-grid">
+            
+            <a href="/docs/?lang=TR&class=Genel&doc=2-teknik_bilgiler.md#udp-paket-boyutlari" class="feature-link">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                    </div>
+                    <h3>Optimize Çok Oyunculu Altyapı</h3>
+                    <p>Gecikmeyi en aza indirmek için özel geliştirilen C# ve UDP tabanlı ağ altyapısı.</p>
+                </div>
+            </a>
+
+            <a href="/docs/?lang=TR&class=Modding&doc=1-intro.md" class="feature-link">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <h3>Modlanabilir Esnek Yapı</h3>
+                    <p>Lua script desteği ve MoonSharp entegrasyonu ile oyuna müdahele et.</p>
+                </div>
+            </a>
+
+            <a href="/hosting" class="feature-link">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3>Web Tabanlı Sunucu Yönetimi</h3>
+                    <p>Kendi Private Server'ınızı kurun ve web panelinden yönetin.</p>
+                </div>
+            </a>
+
+            <a href="/docs/?lang=TR&class=Genel&doc=1-hakkimda.md" class="feature-link">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>Topluluk Odaklı Gelişim</h3>
+                    <p>Geri bildirimlere önem veren ve topluluğu dinleyen gelişme.</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="/footer.js"></script>
+    <script src="navbar.js"></script>
+    <script src="session.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

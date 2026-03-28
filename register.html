@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol - Drivionline</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/favicon.png?v=2" type="image/png">
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <div class="container" style="max-width: 450px; margin-top: 80px;">
+        
+        <div class="panel-box" id="registerPanel">
+            <div class="panel-header">Yeni Hesap Oluştur</div>
+            <div class="panel-content">
+                
+                <div class="alert-error" id="regErrorMsg"></div>
+
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" id="regUsername" class="form-input" autocomplete="off" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>E-Posta Adresi</label>
+                        <input type="email" id="regEmail" class="form-input" autocomplete="off" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="password" id="regPassword" class="form-input" required>
+                    </div>
+
+                    <button type="submit" class="btn" id="regSubmitBtn" style="width: 100%; padding: 12px;">Kayıt Ol</button>
+                </form>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="/login" style="color: #888888; font-size: 13px; text-decoration: none; font-weight: bold;">Zaten hesabın var mı? Giriş Yap</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-box" id="verifyPanel" style="display: none;">
+            <div class="panel-header">E-Posta Doğrulama</div>
+            <div class="panel-content">
+                
+                <div class="alert-error" id="verErrorMsg"></div>
+                <p style="font-size: 13px; color: #aaaaaa; margin-bottom: 20px;">E-posta adresinize 6 haneli bir doğrulama kodu gönderdik. Lütfen spam klasörünü de kontrol ederek kodu aşağıya girin.</p>
+
+                <form id="verifyForm">
+                    <div class="form-group">
+                        <label>Doğrulama Kodu</label>
+                        <input type="text" id="verCode" class="form-input" autocomplete="off" required>
+                    </div>
+
+                    <button type="submit" class="btn" id="verSubmitBtn" style="width: 100%; padding: 12px; background: linear-gradient(to bottom, #1b5e20 0%, #003300 100%); border-color: #4caf50;">Doğrula ve Hesabı Aç</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer-container"></div>
+    
+    <script src="/footer.js"></script>
+    <script src="navbar.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

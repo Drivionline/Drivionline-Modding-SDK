@@ -1,0 +1,271 @@
+/* ==============================================
+   DRIVIONLINE DÖKÜMANTASYON - ANA YERLEŞİM (LAYOUT)
+   ============================================== */
+
+/* Ana Taşıyıcı: Navbar'ın altında ortalanmış, 
+   sol ve sağ panelleri tutan ana kutu */
+.docs-layout {
+    display: flex;
+    width: 95%;
+    max-width: 1500px;
+    margin: 30px auto;
+    align-items: flex-start; /* Sticky'nin çalışması için hayati önem taşır */
+}
+
+/* ==============================================
+   SOL MENÜ (NAVİGASYON) - KAZIK GİBİ SABİT
+   ============================================== */
+.docs-sidebar {
+    flex-shrink: 0; /* Ekran küçülse bile bu menüyü asla ezme! */
+    width: 300px;
+    
+    /* STICKY SİHRİ: Sayfa aşağı kaydıkça menü ekranda asılı kalır */
+    position: sticky;
+    top: 90px; /* Navbar'ın hemen altında durur */
+    height: calc(100vh - 120px); /* Tüm ekranı kaplar ama navbar'a çarpmaz */
+    
+    overflow-y: auto; /* Eğer menü çok uzarsa kendi içinde scroll olur */
+    
+    padding: 25px;
+    margin-right: 30px;
+    border-radius: 16px;
+}
+
+.sidebar-title {
+    color: var(--accent);
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-nav li { margin-bottom: 5px; }
+
+.sidebar-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    word-wrap: break-word; /* Uzun başlıkları alt satıra atar */
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background: rgba(26, 153, 230, 0.15);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ==============================================
+   SAĞ OKUMA ALANI - TAŞMA KORUMALI (WORD-WRAP)
+   ============================================== */
+.docs-content {
+    flex-grow: 1; /* Kalan tüm boşluğu doldur */
+    
+    /* KRİTİK KOD: İçerik çok uzun olsa bile kutuyu patlatma! */
+    min-width: 0; 
+    
+    padding: 50px;
+    border-radius: 16px;
+    margin-bottom: 50px;
+}
+
+/* Metinlerin ekrandan taşmasını ve kelimelerin kırılmasını sağlayan ayar */
+#md-content {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Döküman içi başlıklar ve paragraflar */
+#md-content h1 { font-size: 2.5rem; margin-bottom: 25px; color: #fff; border-bottom: 2px solid var(--glass-border); padding-bottom: 15px;}
+#md-content h2 { font-size: 1.8rem; margin-top: 40px; margin-bottom: 15px; color: var(--accent); }
+#md-content h3 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 10px; color: #fff; }
+#md-content p { margin-bottom: 18px; color: #d4d4d8; line-height: 1.8; font-size: 16px; }
+#md-content ul, #md-content ol { margin-bottom: 20px; padding-left: 25px; color: #d4d4d8; line-height: 1.8; font-size: 16px; }
+#md-content li { margin-bottom: 8px; }
+#md-content strong { color: #fff; }
+
+/* Satır İçi Kod Parçacıkları (Kısa kodlar) */
+#md-content code {
+    background: rgba(255, 255, 255, 0.08); /* Daha soft bir arkaplan */
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', Consolas, Monaco, monospace; /* YENİ FONT */
+    color: #61afef; /* VS Code tarzı tatlı bir mavi */
+    font-size: 0.9em;
+    font-weight: 500; /* Çok ince durmaması için biraz kalınlaştırdık */
+}
+
+/* ==============================================
+   KOD BLOKLARI (SADECE BUNLAR SAĞA SOLA KAYSIN)
+   ============================================== */
+#md-content pre {
+    /* Temanın kendi arkaplanını kullanması için eski background kodunu sildik */
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    max-width: 100%;
+    overflow-x: auto; 
+    
+    margin-top: 20px;
+    margin-bottom: 30px;
+    /* Inset gölge yerine dışa doğru hafif bir gölge daha modern durur */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); 
+}
+
+#md-content pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: 14.5px; /* Okunabilirliği biraz artırdık */
+    line-height: 1.6;
+    word-break: normal; 
+    white-space: pre;
+    font-family: 'JetBrains Mono', Consolas, Monaco, monospace; /* YENİ FONT */
+    font-weight: 400;
+}
+
+/* ==============================================
+   KOPYALAMA BUTONU
+   ============================================== */
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(30, 30, 36, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #a1a1aa; /* İkon rengi */
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Hover olmadan önce biraz şeffaf dursun */
+    opacity: 0.6; 
+}
+
+/* Kutuya veya butona fareyle gelince belirginleşsin */
+#md-content pre:hover .copy-btn, .copy-btn:hover {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    background: rgba(26, 153, 230, 0.2);
+    color: #fff;
+    border-color: rgba(26, 153, 230, 0.5);
+    transform: scale(1.05); /* Üstüne gelince çok hafif büyüsün */
+}
+
+html {
+    overflow-y: scroll !important; 
+}
+
+/* ==============================================
+   GLASS TASARIM KAYDIRMA ÇUBUĞU (KESİN GÖRÜNÜR)
+   ============================================== */
+
+/* Genişliği 12px yaptık ki sağ köşede fareyle rahat yakalansın */
+::-webkit-scrollbar {
+    width: 12px; 
+    height: 12px; 
+}
+
+/* Çubuğun arkasındaki yol */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2); 
+}
+
+/* Tutup kaydırdığımız asıl çubuk (Görünürlüğü artırıldı!) */
+::-webkit-scrollbar-thumb {
+    /* 0.15'ti, çok şeffaftı. 0.35 yapıp netleştirdik */
+    background: rgba(0, 0, 0, 0.35); 
+    border-radius: 8px;
+    
+    /* Çubuğun sağından solundan boşluk bırakarak zarif görünmesini sağlayan ince ayar */
+    border: 3px solid transparent; 
+    background-clip: padding-box;
+}
+
+/* Fareyle üstüne gelince DriviOnline mavisiyle parlasın */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(26, 153, 230, 0.6); 
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Kesişim noktası */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Firefox için */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: rgba(0, 0, 0, 0.992) rgba(0, 162, 255, 0.444); 
+}
+
+/* Kategori başlığına hover efekti */
+.category-header:hover {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--accent) !important;
+}
+
+/* Aktif kategori başlığı rengi */
+.category-header.active {
+    color: var(--accent) !important;
+}
+
+/* Alt linklerin biraz daha içeride durması için */
+.category-content li a {
+    padding-left: 25px !important;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.category-content li a:hover {
+    opacity: 1;
+}
+
+/* Fare üzerine geldiğinde opaklığı artır */
+.lua-badge:hover {
+    opacity: 1 !important;
+}
+
+/* ==============================================
+   MOBİL (TELEFON) UYUMLULUĞU
+   ============================================== */
+@media screen and (max-width: 900px) {
+    .docs-layout {
+        flex-direction: column; /* Yan yana değil, alt alta diz */
+        width: 100%;
+        padding: 0 15px;
+    }
+    
+    /* Sol menü mobilde tepeye geçer ve sabitliği kalkar */
+    .docs-sidebar {
+        width: 100%;
+        position: relative; 
+        top: 0;
+        height: auto; /* İçeriği kadar uza */
+        max-height: 300px; /* Çok uzarsa scroll çıkar */
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .docs-content {
+        padding: 25px 20px;
+    }
+}

@@ -1,0 +1,6 @@
+# Git'e gitmesini İSTEMEDİĞİMİZ dosyalar
+sync.sh
+.env
+node_modules/
+*.log
+.DS_Store

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivionline - Dökümantasyon</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <link rel="stylesheet" href="/docsystem/docs.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+    
+    <link rel="shortcut icon" href="/favicon.png?v=2" type="image/png">
+
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <div class="docs-layout">
+        
+        <aside class="docs-sidebar glass-panel" style="display: flex; flex-direction: column; position: sticky; top: 90px; height: calc(100vh - 110px);">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); margin-bottom: 15px; padding-bottom: 10px; flex-shrink: 0;">
+                <h3 class="sidebar-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">Dökümanlar</h3>
+                
+                <select id="lang-selector" style="background: rgba(30, 30, 36, 0.8); color: white; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; padding: 4px 8px; cursor: pointer; font-family: inherit; font-size: 13px; outline: none;">
+                    <option value="TR">Dil: TR</option>
+                    <option value="EN">Languange: EN</option>
+                </select>
+            </div>
+            
+            <div class="search-container" style="margin-bottom: 15px; position: relative; flex-shrink: 0;">
+                <div style="display: flex; align-items: center; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 8px; overflow: hidden; padding-right: 8px;">
+                    <input type="text" id="doc-search" placeholder="Dökümanlarda ara..." style="flex-grow: 1; min-width: 0; padding: 10px; background: transparent; color: white; border: none; outline: none; box-sizing: border-box; font-family: inherit; font-size: 14px;">
+                    
+                    <div id="search-nav-tools" style="display: none; align-items: center; gap: 6px;">
+                        <span id="match-count" style="color: #a1a1aa; font-size: 13px; font-weight: 600; padding: 0 4px;">0/0</span>
+                        <button id="search-up" title="Önceki Sonuç" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                        </button>
+                        <button id="search-down" title="Sonraki Sonuç" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+                <ul id="search-results" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #1e1e24; border: 1px solid var(--glass-border); border-radius: 8px; padding: 10px; list-style: none; max-height: 300px; overflow-y: auto; z-index: 100; margin-top: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);"></ul>
+            </div>
+
+            <ul class="sidebar-nav" style="flex-grow: 1; overflow-y: auto; margin-bottom: 0; padding-right: 5px;">
+                <li style="color:var(--text-muted); padding:10px;">Yükleniyor...</li>
+            </ul>
+
+            <a href="https://www.lua.org" target="_blank" class="lua-badge" style="text-decoration: none; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; gap: 10px; opacity: 0.6; transition: all 0.3s ease; flex-shrink: 0;">
+                <img src="/assets/lua_logo.png" alt="Lua" style="height: 28px;">
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <span style="color: #a1a1aa; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Modding API</span>
+                    <span style="color: #fff; font-size: 13px; font-weight: 500;">Powered by Lua</span>
+                </div>
+            </a>
+
+        </aside>
+
+        <main class="docs-content glass-panel">
+            <div id="md-content">
+                <p style="color: var(--text-muted);">Yükleniyor...</p>
+            </div>
+        </main>
+
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="/footer.js"></script>
+    <script src="/navbar.js"></script>
+    <script src="/session.js"></script>
+    <script src="/docsystem/marked.umd.js"></script>
+    <script src="/docsystem/highlight.min.js"></script>
+    <script src="/docsystem/docs.js?v=2"></script>
+</body>
+</html>
