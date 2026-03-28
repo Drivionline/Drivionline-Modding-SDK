@@ -1,14 +1,10 @@
-# Her şeyi engelle
 *
 
-# Sadece bunları serbest bırak
 !docs/
 !README.md
 !LICENSE
 !.gitignore
 
-# Klasörlerin içindekileri de serbest bırak
 !docs/**
 
-# Scriptin kendisi gitmesin
 sync.sh
