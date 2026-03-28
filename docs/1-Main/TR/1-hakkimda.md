@@ -1,0 +1,11 @@
+# Hakkımda
+
+Merhaba ben Semih. Drivionline projesi 2025'in ilk aylarında Godot'a olan ilgim ve oyun yapma isteğimle başlamıştı. İlk zamanlar araştırmalara başladım başka projeleri ve fikirleri inceledim. İlgim araç simülasyonları ve oyunları üzerineydi. Bu merakımla birlikte ilk projemi başlatmak için jreo03'ün VitaVehicle - "Realistic" Car Physics (g-rcp2/RCP4) projesini gördüm ve bunun üzerinde araştırmalar ve denemeler yapmaya başladım.
+
+Bundan sonra jreo03'ün GitHub sayfası (https://github.com/jreo03/g-rcp2) gördüm ve Godot'da denemelere başladım. İlk önce kendi menü sistemlerimi ve ayar sistemlerimi yapmakla başladım. Sonradan oyunu ekonomi/multiplayer sistemlerine yöneltmeye başladım. Aslında ilk fikrim bir Node.js tabanlı API sistemlerini kullanarak bir ekonomi dünyası kurmaktı. Ama baktımki bu olmayacak bende oyunu ücretsiz yapma kararı verip private server sistemini ve Lua modding sistemini geliştirmeye başladım. 
+
+Oyun şu an aktif geliştirme sürecinde olduğu için temel mekanikler topluluk geri bildirimleriyle şekillenmeye ve optimize edilmeye devam ediyor. Şuan hala temel oturum ve hesapları yönetmek için Node.js tabanlı sistemimi geliştiriyorum ve game server kısmında ise C# ve Lua modding sistemlerini kullanıyorum. Aslında ilk başta oyun içinde microtransaction gibi bir oyun içi alım sistemi kurmak istiyordumki mevcut oyun geliştirmek için lazım olan birşeyler satmak ve işletmenin yükü/yasal işlemlerini görünce bundan vazgeçtim ve daha modding destekli daha şeffaf ve geliştirmeye/modding yönelik bir şekile geliştirmeye devam ettim ve oyunu ücretsiz yapma kararı aldım. 
+
+Dürüst olursak benim örnek almaya çalıştığım temel oyun LFS'dir (Live For Speed) bu oyunu ben eskiden beri oynarım ve açıkca söylerimki iyi oyundur fizik konusunda hala çok iyi bir oyun optimizasyonları, sadeliği, ve arkasında büyük bir şirket olmaması benim dikkatimi çekti. Tabi Drivionline'nin fiziği LFS'nin 20 yıllık birikimi kadar değil ve daha basit yaklaşımlı. 
+
+Eğer bir sorunuz veya bir öneriniz olursa bana oyunun sosyal medya hesaplarından veya mail atarak ulaşabilirsiniz.
