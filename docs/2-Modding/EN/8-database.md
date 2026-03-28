@@ -172,7 +172,7 @@ server.dbExecute("ALTER TABLE Vehicles ADD COLUMN Color TEXT DEFAULT 'White'")
 We will add a new command to the chat, its name will be `/rol` and an example usage is this: `/rol username admin`
 When you type this, we will find that player in the database from the arguments of this command and make their role `admin`.
 
-**WARNING**! Only do this test in a test environment. Never give the `admin` role to a random person in a live environment. And this command can only be used by those who have the `admin` role. Before the test, do not forget to give your own account the `admin` role (see: https://drivionline.com/docs/?lang=TR&class=2+-+Modding&doc=1-intro.md#kendi-hesabiniza-admin-owner-yetkisi-nasil-verilir).
+**WARNING**! Only do this test in a test environment. Never give the `admin` role to a random person in a live environment. And this command can only be used by those who have the `admin` role. Before the test, do not forget to give your own account the `admin` role (see: https://drivionline.com/docs/?lang=EN&class=2-Modding&doc=1-intro.md#how-do-i-grant-admin-owner-permissions-to-my-own-account).
 
 
 ### 2.1 Database Result Table (Result Keys)

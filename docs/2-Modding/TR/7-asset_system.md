@@ -33,7 +33,7 @@ Yukarıdaki örnekte modun asıl ID'si olan `sehir_paketi_1` ismini Lua tarafın
 
 AssetPack içindeki bir objeyi dünyaya yerleştirmek için `assets.create` API'sini kullanıyoruz.
 
-Bkz: https://drivionline.com/docs/?lang=TR&class=2+-+Modding&doc=6-assets.md#asset-yaratma-ve-temel-asset-kontrolleri
+Bkz: https://drivionline.com/docs/?lang=TR&class=2-Modding&doc=6-assets.md#asset-yaratma-ve-temel-asset-kontrolleri
 
 ### API
 

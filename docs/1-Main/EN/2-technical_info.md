@@ -1,50 +1,42 @@
 # General Technical Information
 
-Drivionline is an evolving project with a core focus on Lua modding and Multiplayer systems.
+Drivionline is a project in active development, primarily focused on Lua modding and multiplayer systems.
 
 ### Player and Vehicle Management
 
-Instantaneous and small data, such as vehicle selection and movement data, are sent to the C# game server using Godot's PacketPeerUDP class. The server then broadcasts this data to other players as needed. We are doing our best to ensure maximum performance and speed.
+Small, real-time data—such as player vehicle selection and movement inputs—are sent as packets to the C# game server using Godot's `PacketPeerUDP` class. Depending on the context, the C# game server then broadcasts this data to other players. We are doing our absolute best to ensure maximum performance and high speed.
 
 ### Lua Modding System
 
-Lua scripts are integrated into the C# game server via MoonSharp. Lua interacts with the C# APIs to send commands to the client over an encrypted TCP channel. In Godot, these packets are distributed to the relevant managers where the commands are processed.
+Lua scripts actually connect to the C# game server via MoonSharp. 
+By calling the APIs on the C# side, Lua essentially just sends commands to the client over an encrypted TCP channel.
+In Godot, these packets are routed to the appropriate managers depending on the situation, and the commands are processed accordingly.
 
 ### Hardware Support
 
-Since my own steering wheel setup is a DIY FFB system built with an Arduino Leonardo, high-detail Force Feedback (FFB) is currently limited. I am working to improve this, including better gear shifter support.
-
-We use the SDL3 library for communication between hardware and Godot.
-
-Basic FFB and support for gas, brake, and clutch pedals are available, though they are still being refined.
-
-Because SDL3 is a comprehensive library, it supports most standard steering wheel sets.
+Since my personal steering wheel is a DIY FFB system built with a simple Arduino Leonardo, the game currently lacks highly detailed FFB support.
+I am trying to improve it as much as possible, but features like shifter support are still under development.
+The SDL3 library is used to handle communication between the hardware and Godot.
+Basic FFB along with throttle, brake, and clutch support is available, though it is not heavily advanced yet.
+However, since SDL3 is an advanced library, it natively supports other commercial steering wheel sets.
 
 ### UDP Packet Sizes
 
-We strive to keep UDP packet sizes as low as possible for efficiency.
-
-Movement data is synchronized 20 times per second.
-
-While sizes may vary with updates, packet sizes typically range between 30-40 Bytes.
+On the UDP side, I am actively trying to keep packet sizes as small as possible.
+To give a general idea about packet sizes: real-time movement data is sent 20 times per second. While the exact size of the movement data may change with future updates, it generally ranges between 30 and 40 Bytes.
 
 ### Private Server Setup
 
-To host a private server, you will need to rent your own Linux VPS.
-For detailed installation instructions, visit: Server Setup Guide
+If you want to host a private server, you will need to rent a dedicated server from any hosting provider.
+For setup details: https://drivionline.com/docs/?lang=EN&class=1-Main&doc=3-server_setup.md#server-setup-and-details
 
-### Mod Distribution
+### Mod Distribution 
 
-Any mod file (must be in .zip format) placed in your private server's server_mods folder is automatically distributed to all joining players via TCP port 50505 (HTTP). Default mods included with the server files are intended for core gameplay and development.
+Any mod file (which must be in .zip format) placed in the `server_mods` folder of your private server files can be downloaded by all players joining the server. These files are distributed over the 50505 TCP (HTTP) port. The default mods included in the server files are intended for basic development and core gameplay testing.
 
-If a mod file in the server_mods folder is modified or added, the system automatically detects this and sends a re-download command to players, ensuring they only download the changed files.
+If a mod file in the `server_mods` folder is modified or a new file is added, the system automatically detects this and sends a re-download command to the clients. The game identifies exactly which file has changed and downloads it automatically.
 
-### Map and Vehicle Modding
+### Information About Map and Car Mods
 
-To create Map or Vehicle mods, you only need a 3D modeling program like Blender and basic modeling knowledge.
-
-We aim to keep modding support as simple as possible.
-
-Models and metadata should be packed into a .zip file.
-
-We use the .GLB format for models, which can include animations, textures, and materials.
+To create map or car mods, all you need is a 3D modeling program (like Blender) and some basic modeling knowledge. 
+Modding support is designed to be straightforward, and we are striving to keep it as simple as possible. You must pack your models and configuration files into a .zip archive, which will serve as your main mod file. We use the `.GLB` format for model files, allowing you to include animations, textures, and materials natively.

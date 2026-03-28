@@ -33,7 +33,7 @@ In the example above, we will **never use** the mod's actual ID, `city_pack_1`, 
 
 To place an object from an AssetPack into the world, we use the `assets.create` API.
 
-See: https://drivionline.com/docs/?lang=EN&class=2+-+Modding&doc=6-assets.md#asset-yaratma-ve-temel-asset-kontrolleri
+See: https://drivionline.com/docs/?lang=EN&class=2-Modding&doc=6-assets.md#asset-creation-and-basic-asset-controls
 
 ### API
 

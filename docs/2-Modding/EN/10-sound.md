@@ -1,2 +1,2 @@
-# Ses yönetimi
+# Sound manage
 

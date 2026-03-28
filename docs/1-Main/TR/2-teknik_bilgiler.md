@@ -28,7 +28,7 @@ Paket boyutları hakkında genel bir bilgi verirsek anlık hareket verileri sani
 ### Private server kurulumu
 
 Private server kurmak istiyorsanız herhangi bir hosting firmasından kendinize ait bir Sunucu kiralamanız lazım.
-Kurulum detayları için: https://drivionline.com/docs/?lang=TR&class=Genel&doc=3-server_kurulum.md
+Kurulum detayları için: https://drivionline.com/docs/?lang=TR&class=1-Main&doc=3-server_kurulum.md#server-kurulumu-ve-detaylar
 
 ### Mod dağıtımı 
 
