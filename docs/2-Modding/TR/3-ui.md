@@ -96,7 +96,7 @@ menu:show()
 
 `menu:close()`
 
-    Paneli kapatır(Siler)
+    Paneli SİLMEZ, sadece görünmez yapar (Gizler). Oyuncu menüyü tekrar açtığında yazdığı yazılar veya slider ayarları bıraktığı gibi durur.
 
 ### İlk scriptimizi yazalım.
 
@@ -625,6 +625,73 @@ function panel(playerId, sayfa)
     end
 
     -- Paneli ekrana bas
+    menu:show()
+end
+
+```
+
+---
+
+
+## Otomatik Hafıza (State) Sistemi ve Görünürlük (Visibility)
+
+Menüleri her seferinde baştan yaratmak veya silmek yerine, performansı artırmak için Gizle/Göster (Toggle) mantığı kullanılır. Ayrıca menüdeki değişkenleri kaybetmemek için `menu.state` tablosu mevcuttur.
+
+### Ek API ve Özellikler
+
+`menu:setVisible(state)`
+
+    Panelin ekrandaki görünürlüğünü anlık olarak değiştirir.
+    Parametreler: state (true veya false)
+
+`menu:close()`
+
+    Paneli SİLMEZ, sadece görünmez yapar (Gizler). Aslında arka planda `menu:setVisible(false)` çalıştırır. Oyuncu menüyü tekrar açtığında yazdığı yazılar veya slider ayarları bıraktığı gibi durur.
+
+`menu:destroy()`
+
+    Paneli sunucudan ve ekrandan KÖKTEN SİLER. Sadece menüyü tamamen yok etmek istediğinizde kullanın.
+
+`menu.state`
+
+    Bu bir fonksiyon değil, o menüye ve oyuncuya özel kalıcı bir hafıza tablosudur. Oyuncu arayüzü kapatıp açsa bile (oyundan çıkana kadar) bu tablodaki veriler asla silinmez.
+
+### Yeni Menü Mantığı (Örnek Kod)
+
+`UI.createMenu` aynı menü ismiyle tekrar çağrıldığında paneli otomatik gizler veya açar ve **nil** döner. Bu sayede aşağıdaki kodlar sadece oyuncu menüyü İLK KEZ açtığında çalışır.
+
+```lua
+
+server.on("onPlayerJoin", function(playerId)
+    server.bindKey(playerId, "B", function(pId) 
+        akilli_panel(pId) 
+    end)
+end)
+
+function akilli_panel(id)
+    local menu = UI.createMenu(id, "ornek_menu", "Akıllı Menü", 200, 200, 600)
+    
+    -- Menü zaten varsa ui_helper bunu görünür/görünmez yapar ve nil döner. 
+    -- Kod burada kesilir, aşağıdaki butonlar tekrar yaratılmaz.
+    if not menu then return end
+
+    -- OTOMATİK HAFIZA (State): Oyuncuya özel kalıcı değişkenler
+    local s = menu.state
+    s.kullanici_adi = s.kullanici_adi or "Misafir"
+    s.ses_seviyesi = s.ses_seviyesi or 100.0
+
+    menu:addInput(s.kullanici_adi, true, function(pId, text)
+        s.kullanici_adi = text -- Oyuncu yazdıkça hafızaya kaydolur
+    end)
+
+    menu:addSlider(0, 100, s.ses_seviyesi, 1, function(pId, val)
+        s.ses_seviyesi = val -- Slider kaydıkça hafızada tutulur
+    end)
+
+    menu:addButton("Kapat", function(pId)
+        menu:close() -- SADECE GİZLER! B'e basıp tekrar açtığında her şey duruyor olacak.
+    end)
+
     menu:show()
 end
 

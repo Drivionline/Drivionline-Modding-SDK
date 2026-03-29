@@ -93,9 +93,9 @@ menu:show()
 
     Creates (Spawns) the panel.
 
-``menu:close()``
+`menu:close()`
 
-    Closes (Deletes) the panel.
+    Does NOT DELETE the panel, it only makes it invisible (Hides it). In the background, it actually runs `menu:setVisible(false)`. When the player reopens the menu, the text they wrote or slider settings stay exactly as they left them.
 
 ### Let's write our first script.
 
@@ -623,6 +623,74 @@ function panel(playerId, page)
     end
 
     -- Render the panel on the screen
+    menu:show()
+end
+
+```
+
+
+---
+
+
+## Automatic Memory (State) System and Visibility
+
+Instead of recreating or deleting menus every time, a Hide/Show (Toggle) logic is used to improve performance. Additionally, the `menu.state` table is available so that variables in the menu are not lost.
+
+### Additional API and Features
+
+`menu:setVisible(state)`
+
+    Instantly changes the visibility of the panel on the screen.
+    Parameters: state (true or false)
+
+`menu:close()`
+
+    Does NOT DELETE the panel, it only makes it invisible (Hides it). In the background, it actually runs `menu:setVisible(false)`. When the player reopens the menu, the text they wrote or slider settings stay exactly as they left them.
+
+`menu:destroy()`
+
+    COMPLETELY DELETES the panel from the server and the screen. Only use this when you want to destroy the menu permanently.
+
+`menu.state`
+
+    This is not a function, but a permanent memory table specific to that menu and player. Even if the player closes and reopens the interface (until they leave the game), the data in this table is never deleted.
+
+### New Menu Logic (Example Code)
+
+When `UI.createMenu` is called again with the same menu name, it automatically hides or shows the panel and returns **nil**. This way, the code below only runs when the player opens the menu for the FIRST TIME.
+
+```lua
+
+server.on("onPlayerJoin", function(playerId)
+    server.bindKey(playerId, "F5", function(pId) 
+        smart_panel(pId) 
+    end)
+end)
+
+function smart_panel(id)
+    local menu = UI.createMenu(id, "example_menu", "Smart Menu", 200, 200, 600)
+    
+    -- If the menu already exists, ui_helper makes it visible/invisible and returns nil. 
+    -- The code stops here, the buttons below are not recreated.
+    if not menu then return end
+
+    -- AUTOMATIC MEMORY (State): Permanent variables specific to the player
+    local s = menu.state
+    s.username = s.username or "Guest"
+    s.volume_level = s.volume_level or 100.0
+
+    menu:addInput(s.username, true, function(pId, text)
+        s.username = text -- Saves to memory as the player types
+    end)
+
+    menu:addSlider(0, 100, s.volume_level, 1, function(pId, val)
+        s.volume_level = val -- Kept in memory as the slider moves
+    end)
+
+    menu:addButton("Close", function(pId)
+        menu:close() -- ONLY HIDES IT! When you press F5 to reopen, everything will be there.
+    end)
+
     menu:show()
 end
 
