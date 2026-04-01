@@ -662,7 +662,7 @@ When `UI.createMenu` is called again with the same menu name, it automatically h
 ```lua
 
 server.on("onPlayerJoin", function(playerId)
-    server.bindKey(playerId, "F5", function(pId) 
+    server.bindKey(playerId, "B", function(pId) 
         smart_panel(pId) 
     end)
 end)
@@ -688,7 +688,7 @@ function smart_panel(id)
     end)
 
     menu:addButton("Close", function(pId)
-        menu:close() -- ONLY HIDES IT! When you press F5 to reopen, everything will be there.
+        menu:close() -- ONLY HIDES IT! When you press B to reopen, everything will be there.
     end)
 
     menu:show()
