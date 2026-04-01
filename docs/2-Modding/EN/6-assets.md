@@ -12,6 +12,11 @@ Before all tests, do not forget to press the "B" key so that the object is creat
 
 Let's create an object in the world when players press the "B" key.
 
+> **IMPORTANT INFO: GLOBAL SYNCHRONIZATION (isPersistent)**
+> There is a hidden `isPersistent` parameter at the very end of all `assets` functions (create, move, rotate, anim, remove, etc.) in this documentation.
+> By default, this value is considered **true**. This means that an object you create, move, or remove appears/changes synchronously for **all players on the server**. Newly joined players will also see these objects automatically.
+> If you want an action to happen *only on that specific player's screen*, you must pass `false` as the last parameter of the function.
+
 ### APIs We Will Use
 
 `assets.create`
@@ -23,7 +28,7 @@ Let's create an object in the world when players press the "B" key.
 
     Note: You can enter any name you want in the "unique name" part of the parameters.
 
-    Note: In the "modelName" parameter
+    Note: modelName: The name written in the "contents" section of info.json (e.g., "street_lamp").
 
 `server.bindKey`
     Binds a specific key on a player's keyboard to a server-side Lua function. When the player presses the key, the assigned function is instantly triggered on the server.
@@ -275,6 +280,11 @@ When the player presses the "G" key, the box we created with the "B" key will be
 
     loop (Loop): if set to true, the timer starts again every time it expires; if set to false (default), it runs only once and stops.
 
+`assets.remove`
+    Permanently deletes an existing object from the world. (If it was created globally, it will be removed for everyone).
+
+    Parameters: playerId, id (the unique name of the object to be deleted), isPersistent (optional, default is true).
+
 ### Example code
 
 ```lua
@@ -357,6 +367,39 @@ server.on("onGuiCallback", function(playerId, jsonStr)
 
         end
     end
+end)
+
+```
+
+---
+
+## 7. Sticking an Object to a Player/Vehicle (Stick)
+
+After creating an object, you can stick/attach it to a player (For example, giving a bag to a player's hand or putting a hat on their head).
+
+### API
+
+`assets.stick`
+    Attaches an object to the specified target (targetPlayerId). As the target moves, the object moves with it.
+
+    Parameters: playerId, id (the object's id), targetPlayerId (the player/target it will stick to), lx, ly, lz (X, Y, Z distance/offset from the target), rx, ry, rz (the object's rotation), attachType (attachment type/bone name), isPersistent.
+
+### Example Code
+
+```lua
+
+server.on("onPlayerJoin", function(playerId)
+    server.bindKey(playerId, "H", function(id)
+        -- First, we create the hat (The coordinates don't matter much because we will attach it immediately)
+        assets.create(id, "player_hat", "hat_model", 0, 0, 0)
+        
+        -- Wait for 0.5 seconds and stick the object to the player's head
+        -- (It is healthy to give a short time for the object to load on the Godot side)
+        server.setTimer(500, function()
+            -- With lx, ly, lz settings, we give an offset so the hat fits perfectly on the head.
+            assets.stick(id, "player_hat", id, 0, 1.8, 0, 0, 0, 0, "head")
+        end, false)
+    end)
 end)
 
 ```
