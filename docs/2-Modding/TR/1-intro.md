@@ -48,7 +48,7 @@ server.addCommand("arabaver", function(playerId, args)
     local isim = server.getPlayerName(playerId)
     
     -- Oyuncuya bir araç spawn ediyoruz (Örn: jreo_model_23)
-    server.createVehicle(playerId, "jreo_model_23", 1)
+    car.create(playerId, "jreo_model_23", 1)
     
     -- Oyuncuya mesaj gönderiyoruz
     server.sendMessage(playerId, "Tebrikler " .. isim .. ", aracın oluşturuldu!")

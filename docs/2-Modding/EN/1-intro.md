@@ -48,7 +48,7 @@ server.addCommand("givecar", function(playerId, args)
     local name = server.getPlayerName(playerId)
     
     -- Spawn a vehicle for the player (Ex: jreo_model_23)
-    server.createVehicle(playerId, "jreo_model_23", 1)
+    car.create(playerId, "jreo_model_23", 1)
     
     -- Send a message to the player
     server.sendMessage(playerId, "Congratulations " .. name .. ", your vehicle has been created!")
